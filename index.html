@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StopWatch</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Stop Watch ⏳</h1>
+    <div class="maindiv">
+        <p id="countdown">0</p>
+        <div class="innerdiv">
+        <button class="id1">Start</button>
+        <button class="id2">Reset</button>
+        <button class="id3">Stop</button>
+        <button class="id4">getTime</button>
+        <button class="id5">clearTime</button>
+        <div class="restvalue"></div>
+    </div>
+    <div class="restvalue">
+        </div>
+    </br>
+    </div>
+   
+    <script>
+        const countdownele = document.getElementById("countdown");
+        const resetelement = document.querySelector(".restvalue");
+        let startcount = 0;
+        let interval_id;
+
+        //start 
+        const  starttimer = () => {
+            interval_id = setInterval(() => {
+                countdownele.innerText = startcount++;
+            },1000);
+        };
+
+        // stop time
+        const stoptimer = () => {
+            clearInterval(interval_id)
+        }
+
+        //reset time 
+        const resettime = () => {
+            startcount = 0;
+            countdownele.innerText = startcount;
+            clearInterval(interval_id)
+        }
+
+        //get time 
+        const gettime = () => {
+            const newpara = document.createElement("para");
+            newpara.innerText = `The Stop time is ${startcount}`;
+            resetelement.append(newpara)
+        }
+
+        // clear time
+           
+        const cleartimer = () => {
+            resetelement.innerHTML = "";
+        }
+
+
+
+        document
+        .querySelector(".id1")
+        .addEventListener("click",starttimer)
+
+        
+        document
+        .querySelector(".id2")
+        .addEventListener("click",resettime)
+
+        
+        document
+        .querySelector(".id3")
+        .addEventListener("click",stoptimer)
+
+        
+        document
+        .querySelector(".id4")
+        .addEventListener("click",gettime)
+
+        
+        document
+        .querySelector(".id5")
+        .addEventListener("click",cleartimer)
+
+
+    </script>
+    
+</body>
+</html>
